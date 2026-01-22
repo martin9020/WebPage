@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Martin Velichkov | Structural Engineer & Tekla Steel Detailer</title>
-    <meta name="description" content="Professional structural engineer specializing in Tekla Structures, 3D BIM modeling, and steel detailing. Founder of M I V LTD.">
+    <title>Martin Velichkov | Steel Detailing & BIM Modeling</title>
+    <meta name="description" content="Martin Velichkov - Structural steel detailing and 3D BIM modeling. Tekla Structures specialist with 8+ years experience.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
-                <span class="logo-text">MV</span>
+                <span class="logo-text">M I V</span>
                 <span class="logo-subtext">Engineering</span>
             </a>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                <li><a href="#contact" class="nav-link nav-cta">Contact Me</a></li>
+                <li><a href="#contact" class="nav-link nav-cta">Contact</a></li>
             </ul>
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
                 <span></span>
@@ -35,121 +34,30 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero hero-simple" id="home">
         <div class="hero-bg">
             <div class="hero-grid"></div>
         </div>
         <div class="hero-content">
             <div class="hero-text">
-                <p class="hero-subtitle">Structural Engineer & BIM Specialist</p>
-                <h1 class="hero-title">Martin <span class="highlight">Velichkov</span></h1>
-                <p class="hero-description">Transforming complex structural concepts into precise, constructible 3D models. Expert in Tekla Structures with 8+ years of experience in steel detailing and BIM coordination.</p>
+                <h1 class="hero-title">Hi, I'm <span class="highlight">Martin</span></h1>
+                <p class="hero-tagline">Steel Detailing & 3D BIM Modeling</p>
+                <p class="hero-description">I help construction teams bring their projects to life with precise Tekla models and fabrication-ready drawings. Based in Sofia, working worldwide.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Start a Project</a>
-                    <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">8+</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">100+</span>
-                        <span class="stat-label">Projects Completed</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">LOD 500</span>
-                        <span class="stat-label">Model Quality</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-image-container">
-                    <div class="hero-3d-element"></div>
-                    <div class="floating-badge badge-1">
-                        <span class="badge-icon">&#9670;</span>
-                        <span>Tekla Certified</span>
-                    </div>
-                    <div class="floating-badge badge-2">
-                        <span class="badge-icon">&#9733;</span>
-                        <span>Eurocode Expert</span>
-                    </div>
+                    <a href="#portfolio" class="btn btn-primary">See My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
                 </div>
             </div>
         </div>
-        <a href="#about" class="scroll-indicator">
-            <span class="scroll-text">Scroll to explore</span>
+        <a href="#services" class="scroll-indicator">
             <span class="scroll-arrow">&#8595;</span>
         </a>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">About Me</span>
-                <h2 class="section-title">Engineering Excellence Through <span class="highlight">Precision</span></h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="about-lead">Motivated detail-driven structural engineer with a passion for precise steel detailing and smooth project delivery.</p>
-                    <p>With a Master's degree in Civil Engineering from the University of Architecture, Civil Engineering and Geodesy (UACEG) in Sofia, Bulgaria, I bring a strong foundation in practical problem-solving and technical planning to every project.</p>
-                    <p>My UK NARIC/ENIC certification confirms my qualification at RQF Level 7, reflecting an advanced postgraduate level of study that meets international standards.</p>
-                    <p>I am friendly, reliable, and always aiming to create work that is safe, clear, and easy for others to use. As the founder of M I V LTD, I now lead projects from concept to completion.</p>
-
-                    <div class="about-credentials">
-                        <div class="credential">
-                            <div class="credential-icon">&#127891;</div>
-                            <div class="credential-info">
-                                <h4>Master's Degree</h4>
-                                <p>Civil Engineering - UACEG Sofia</p>
-                            </div>
-                        </div>
-                        <div class="credential">
-                            <div class="credential-icon">&#127760;</div>
-                            <div class="credential-info">
-                                <h4>UK NARIC Certified</h4>
-                                <p>RQF Level 7 / SCQF Level 11</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-skills">
-                    <h3>Core Competencies</h3>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <div class="skill-icon">&#9881;</div>
-                            <h4>Technical Skills</h4>
-                            <ul>
-                                <li>Tekla Structures</li>
-                                <li>3D BIM Modeling</li>
-                                <li>Steel Detailing</li>
-                                <li>Eurocode Design</li>
-                                <li>AutoCAD</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-icon">&#128200;</div>
-                            <h4>Professional Skills</h4>
-                            <ul>
-                                <li>Project Management</li>
-                                <li>Critical Thinking</li>
-                                <li>Leadership</li>
-                                <li>Client Relations</li>
-                                <li>Team Coordination</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Services</span>
                 <h2 class="section-title">Comprehensive <span class="highlight">BIM Solutions</span></h2>
                 <p class="section-description">From initial concept to fabrication-ready drawings, I deliver complete structural engineering solutions.</p>
             </div>
@@ -255,269 +163,275 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section class="experience" id="experience">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Experience</span>
-                <h2 class="section-title">Professional <span class="highlight">Journey</span></h2>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item current">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Apr 2025 - Present</span>
-                        <h3>Company Founder</h3>
-                        <h4>M I V - LTD</h4>
-                        <p>Leading structural engineering projects independently, providing comprehensive BIM and steel detailing services to clients worldwide.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Oct 2019 - Mar 2025</span>
-                        <h3>Structural Engineer</h3>
-                        <h4>Clovis Canopies LTD (Arowwai Industries)</h4>
-                        <ul>
-                            <li>Client consultations to define project needs and ensure clear approval of all requirements</li>
-                            <li>Development of detailed assembly drawings, working closely with production teams to confirm accuracy during fabrication</li>
-                            <li>Preparation of installation and general arrangement plans to guide on-site teams through precise canopy installation</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Jan 2019 - Sep 2019</span>
-                        <h3>Structural CAD/BIM Engineer</h3>
-                        <h4>Ircon LTD</h4>
-                        <p>3D BIM & CAD Modeling in Tekla Structures, including producing fabrication drawings and general arrangement plans for installers.</p>
-                        <a href="https://irconltd.com/" target="_blank" class="timeline-link">Visit Company &#8599;</a>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Dec 2016 - Jan 2019</span>
-                        <h3>Structural Engineer</h3>
-                        <h4>Rema Design</h4>
-                        <p>3D BIM and CAD modeling in Tekla Structures, covering assembly production drawings and general arrangement plans for small and large projects. Metal structure sizing with Eurocode. Unique custom metal furniture with rounded and angled forms.</p>
-                        <a href="http://www.remadesign.net/" target="_blank" class="timeline-link">Visit Company &#8599;</a>
-                    </div>
-                </div>
-                <div class="timeline-item education">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2011 - 2019</span>
-                        <h3>Master's Degree in Civil Engineering</h3>
-                        <h4>University of Architecture, Civil Engineering and Geodesy (UACEG)</h4>
-                        <p>Sofia, Bulgaria - Strong focus on practical problem-solving and technical planning.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Portfolio</span>
-                <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
-                <p class="section-description">A selection of structural engineering and steel detailing projects showcasing precision and quality.</p>
+                <h2 class="section-title">My <span class="highlight">Projects</span></h2>
+                <p class="section-description">Browse through my recent work - click any folder to explore the drawings and images inside.</p>
             </div>
+
+            <!-- Breadcrumb Navigation -->
+            <div class="portfolio-breadcrumb" id="portfolio-breadcrumb">
+                <span class="breadcrumb-item active" data-level="folders">All Projects</span>
+            </div>
+
             <div class="portfolio-filters">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="steel">Steel Structures</button>
-                <button class="filter-btn" data-filter="canopy">Canopies</button>
-                <button class="filter-btn" data-filter="custom">Custom Design</button>
+                <button class="filter-btn" data-filter="canopy">EV Canopies</button>
+                <button class="filter-btn" data-filter="industrial">Industrial</button>
+                <button class="filter-btn" data-filter="schools">Education</button>
+                <button class="filter-btn" data-filter="docs">About Me</button>
             </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="steel">
-                    <div class="portfolio-image">
-                        <div class="portfolio-placeholder">
-                            <span>Steel Frame Structure</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Industrial Steel Frame</h3>
-                        <p>Complete structural steel detailing for industrial facility</p>
-                        <span class="portfolio-tag">Steel Structures</span>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="canopy">
-                    <div class="portfolio-image">
-                        <div class="portfolio-placeholder">
-                            <span>Canopy Design</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Commercial Canopy</h3>
-                        <p>Full design and detailing with installation guides</p>
-                        <span class="portfolio-tag">Canopies</span>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="custom">
-                    <div class="portfolio-image">
-                        <div class="portfolio-placeholder">
-                            <span>Custom Metalwork</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Architectural Metalwork</h3>
-                        <p>Unique curved metal elements for modern interior</p>
-                        <span class="portfolio-tag">Custom Design</span>
-                    </div>
-                </div>
-                <div class="portfolio-item large" data-category="steel">
-                    <div class="portfolio-image">
-                        <img src="Screenshot_1.png" alt="Tekla API Application">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Tekla API Application</h3>
-                        <p>Custom plugin for automated grid and beam insertion</p>
-                        <span class="portfolio-tag">Development</span>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="steel">
-                    <div class="portfolio-image">
-                        <div class="portfolio-placeholder">
-                            <span>Connection Details</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Steel Connections</h3>
-                        <p>Detailed moment connections per Eurocode</p>
-                        <span class="portfolio-tag">Steel Structures</span>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="canopy">
-                    <div class="portfolio-image">
-                        <div class="portfolio-placeholder">
-                            <span>Entrance Canopy</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Entrance Canopy System</h3>
-                        <p>Glass and steel canopy with drainage integration</p>
-                        <span class="portfolio-tag">Canopies</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Start Your Next Project?</h2>
-                <p>Let's discuss how I can help bring your structural vision to life with precision BIM modeling and expert steel detailing.</p>
-                <a href="#contact" class="btn btn-primary btn-large">Get In Touch</a>
+            <!-- Folder View -->
+            <div class="portfolio-grid portfolio-folders" id="portfolio-folders">
+
+                <!-- INDUSTRIAL -->
+                <div class="portfolio-folder" data-category="industrial" data-folder="baumit">
+                    <div class="folder-thumbnail">
+                        <img src="Projects/Baumit/Project Folder Picture.JPG" alt="Baumit">
+                        <div class="folder-icon">&#128193;</div>
+                    </div>
+                    <div class="folder-info">
+                        <h3>Baumit</h3>
+                        <p>Industrial Steel Structure</p>
+                        <span class="folder-count">15 items</span>
+                    </div>
+                </div>
+
+                <!-- INDUSTRIAL -->
+                <div class="portfolio-folder" data-category="industrial" data-folder="cimcoop">
+                    <div class="folder-thumbnail">
+                        <img src="Projects/CimCoop/Exported View.png" alt="CimCoop">
+                        <div class="folder-icon">&#128193;</div>
+                    </div>
+                    <div class="folder-info">
+                        <h3>CimCoop</h3>
+                        <p>Industrial Office Complex</p>
+                        <span class="folder-count">14 items</span>
+                    </div>
+                </div>
+
+                <!-- EV CANOPIES -->
+                <div class="portfolio-folder" data-category="canopy" data-folder="mfg-general">
+                    <div class="folder-thumbnail">
+                        <img src="Projects/MFG - General/EV Charging Hub - day.jpg" alt="MFG General">
+                        <div class="folder-icon">&#128193;</div>
+                    </div>
+                    <div class="folder-info">
+                        <h3>MFG - General</h3>
+                        <p>EV Charging Canopies</p>
+                        <span class="folder-count">9 items</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-folder" data-category="canopy" data-folder="mfg-glyne-gap">
+                    <div class="folder-thumbnail">
+                        <img src="Projects/MFG - Projects/MFG - Glyne Gap/MFG - Glyne Gap - 1 .jpg" alt="MFG Glyne Gap">
+                        <div class="folder-icon">&#128193;</div>
+                    </div>
+                    <div class="folder-info">
+                        <h3>MFG - Glyne Gap</h3>
+                        <p>Service Station Canopy</p>
+                        <span class="folder-count">4 items</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-folder" data-category="canopy" data-folder="mfg-stretford">
+                    <div class="folder-thumbnail">
+                        <img src="Projects/MFG - Projects/MFG - Stretford/MFG - Stretford 1.jpg" alt="MFG Stretford">
+                        <div class="folder-icon">&#128193;</div>
+                    </div>
+                    <div class="folder-info">
+                        <h3>MFG - Stretford</h3>
+                        <p>EV Charging Station</p>
+                        <span class="folder-count">6 items</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-folder" data-category="canopy" data-folder="mfg-wellington">
+                    <div class="folder-thumbnail">
+                        <img src="Projects/MFG - Projects/MFG - Wellington/MFG - Wellington 1.jpg" alt="MFG Wellington">
+                        <div class="folder-icon">&#128193;</div>
+                    </div>
+                    <div class="folder-info">
+                        <h3>MFG - Wellington</h3>
+                        <p>EV Charging Station</p>
+                        <span class="folder-count">4 items</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-folder" data-category="canopy" data-folder="mfg-crow-orchard">
+                    <div class="folder-thumbnail">
+                        <img src="Projects/MFG - Projects/MFG - Crow Orchard/MFG - Crow Orchard.jpg" alt="MFG Crow Orchard">
+                        <div class="folder-icon">&#128193;</div>
+                    </div>
+                    <div class="folder-info">
+                        <h3>MFG - Crow Orchard</h3>
+                        <p>Service Station Canopy</p>
+                        <span class="folder-count">2 items</span>
+                    </div>
+                </div>
+
+                <!-- EDUCATION -->
+                <div class="portfolio-folder" data-category="schools" data-folder="bishop-david-brown">
+                    <div class="folder-thumbnail">
+                        <img src="Projects/Oxford LT/Bishop David Brown/DJI_20231222101152_0013_D.JPG" alt="Bishop David Brown">
+                        <div class="folder-icon">&#128193;</div>
+                    </div>
+                    <div class="folder-info">
+                        <h3>Bishop David Brown</h3>
+                        <p>School Steel Structure</p>
+                        <span class="folder-count">3 items</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-folder" data-category="schools" data-folder="castle-view">
+                    <div class="folder-thumbnail">
+                        <img src="Projects/Oxford LT/Castle View/1.jpg" alt="Castle View">
+                        <div class="folder-icon">&#128193;</div>
+                    </div>
+                    <div class="folder-info">
+                        <h3>Castle View Academy</h3>
+                        <p>School Steel Structure</p>
+                        <span class="folder-count">7 items</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-folder" data-category="schools" data-folder="lavington">
+                    <div class="folder-thumbnail">
+                        <img src="Projects/Oxford XL/Lavington/01.jpg" alt="Lavington">
+                        <div class="folder-icon">&#128193;</div>
+                    </div>
+                    <div class="folder-info">
+                        <h3>Lavington School</h3>
+                        <p>Large School Building</p>
+                        <span class="folder-count">5 items</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-folder" data-category="schools" data-folder="toynbee">
+                    <div class="folder-thumbnail">
+                        <img src="Projects/Oxford XL/Toynbee/DJI_20240529102905_0096_D.JPG" alt="Toynbee">
+                        <div class="folder-icon">&#128193;</div>
+                    </div>
+                    <div class="folder-info">
+                        <h3>Toynbee School</h3>
+                        <p>School Steel Structure</p>
+                        <span class="folder-count">7 items</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-folder" data-category="schools" data-folder="uxbridge">
+                    <div class="folder-thumbnail">
+                        <img src="Projects/Uxbridge/Dining Hall.png" alt="Uxbridge">
+                        <div class="folder-icon">&#128193;</div>
+                    </div>
+                    <div class="folder-info">
+                        <h3>Uxbridge Dining Hall</h3>
+                        <p>School Extension</p>
+                        <span class="folder-count">3 items</span>
+                    </div>
+                </div>
+
+                <!-- DOWNLOADS -->
+                <div class="portfolio-folder" data-category="docs" data-folder="portfolio">
+                    <div class="folder-thumbnail">
+                        <img src="Projects/Portfolio/thumbnails/Rema Design Portfolio.jpg" alt="Rema Design Portfolio">
+                        <div class="folder-icon">&#128193;</div>
+                    </div>
+                    <div class="folder-info">
+                        <h3>Project Showcase</h3>
+                        <p>Full Portfolio PDF</p>
+                        <span class="folder-count">1 item</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-folder" data-category="docs" data-folder="cv">
+                    <div class="folder-thumbnail">
+                        <img src="Projects/thumbnails/Modern Professional CV Resume.jpg" alt="Professional CV">
+                        <div class="folder-icon">&#128193;</div>
+                    </div>
+                    <div class="folder-info">
+                        <h3>About Me</h3>
+                        <p>CV & Qualifications</p>
+                        <span class="folder-count">1 item</span>
+                    </div>
+                </div>
+
             </div>
+
+            <!-- Content View (hidden by default) -->
+            <div class="portfolio-grid portfolio-contents" id="portfolio-contents" style="display: none;">
+            </div>
+
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section class="contact contact-simple" id="contact">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Contact</span>
-                <h2 class="section-title">Let's Work <span class="highlight">Together</span></h2>
-                <p class="section-description">Have a project in mind? Get in touch and let's discuss how I can help.</p>
+                <h2 class="section-title">Let's <span class="highlight">Talk</span></h2>
+                <p class="section-description">Have a project in mind? I'd love to hear from you.</p>
             </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <div class="contact-icon">&#9993;</div>
-                        <h3>Email</h3>
-                        <a href="mailto:martinizvorov@gmail.com">martinizvorov@gmail.com</a>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">&#9742;</div>
-                        <h3>Phone</h3>
-                        <a href="tel:+359894316474">+359 894 316 474</a>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">&#9906;</div>
-                        <h3>Location</h3>
-                        <p>Sofia, Bulgaria</p>
-                        <span class="contact-note">Available for remote work worldwide</span>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">&#9881;</div>
-                        <h3>Company</h3>
-                        <p>M I V - LTD</p>
-                        <span class="contact-note">Structural Engineering Services</span>
-                    </div>
+            <div class="contact-simple-grid">
+                <a href="mailto:martinizvorov@gmail.com" class="contact-simple-card">
+                    <span class="contact-simple-icon">&#9993;</span>
+                    <span class="contact-simple-label">Email</span>
+                    <span class="contact-simple-value">martinizvorov@gmail.com</span>
+                </a>
+                <a href="tel:+359894316474" class="contact-simple-card">
+                    <span class="contact-simple-icon">&#9742;</span>
+                    <span class="contact-simple-label">Phone</span>
+                    <span class="contact-simple-value">+359 894 316 474</span>
+                </a>
+                <div class="contact-simple-card">
+                    <span class="contact-simple-icon">&#127758;</span>
+                    <span class="contact-simple-label">Location</span>
+                    <span class="contact-simple-value">Sofia, Bulgaria</span>
+                    <span class="contact-simple-note">Working remotely worldwide</span>
                 </div>
-                <form class="contact-form" id="contact-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required placeholder="John Smith">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" required placeholder="john@company.com">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required placeholder="Project Inquiry">
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service Interested In</label>
-                        <select id="service" name="service">
-                            <option value="">Select a service</option>
-                            <option value="3d-modeling">3D BIM Modeling</option>
-                            <option value="steel-detailing">Steel Detailing</option>
-                            <option value="project-coordination">Project Coordination</option>
-                            <option value="custom-design">Custom Metal Design</option>
-                            <option value="canopy">Canopy Structures</option>
-                            <option value="tekla-api">Tekla API Development</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer footer-simple">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="logo-text">MV</span>
-                    <p>Structural Engineer & Tekla Steel Detailer</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#services">Services</a>
-                    <a href="#portfolio">Portfolio</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="footer-social">
-                    <a href="mailto:martinizvorov@gmail.com" aria-label="Email">
-                        <span>&#9993;</span>
-                    </a>
-                    <a href="tel:+359894316474" aria-label="Phone">
-                        <span>&#9742;</span>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Martin Velichkov - M I V LTD. All rights reserved.</p>
+            <div class="footer-simple-content">
+                <span class="logo-text">M I V</span>
+                <p>&copy; 2025 Martin Velichkov. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Modal for Images and PDFs -->
+    <div class="modal" id="portfolio-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-content">
+                <div class="modal-image-container" id="modal-image-container">
+                    <img src="" alt="" id="modal-image">
+                </div>
+                <div class="modal-pdf-container" id="modal-pdf-container">
+                    <div class="pdf-controls">
+                        <button class="pdf-control-btn" id="pdf-zoom-out" title="Zoom Out">-</button>
+                        <span class="pdf-zoom-level" id="pdf-zoom-level">100%</span>
+                        <button class="pdf-control-btn" id="pdf-zoom-in" title="Zoom In">+</button>
+                        <button class="pdf-control-btn" id="pdf-zoom-reset" title="Reset Zoom">Reset</button>
+                        <a class="pdf-control-btn pdf-download" id="pdf-download" href="" download title="Download PDF">Download</a>
+                    </div>
+                    <div class="pdf-viewer-wrapper" id="pdf-viewer-wrapper">
+                        <iframe src="" id="modal-pdf" title="PDF Viewer"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-caption" id="modal-caption"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

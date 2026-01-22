@@ -1,7 +1,19 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch"
+      "WebSearch",
+      "Bash(dir /s \"C:\\\\Users\\\\Daradudai\\\\WebPage\")",
+      "Bash(tree:*)",
+      "Bash(start \"\" \"C:\\\\Users\\\\Daradudai\\\\WebPage\\\\index.html\")",
+      "Bash(dir /s /b \"C:\\\\Users\\\\Daradudai\\\\WebPage\\\\Projects\\\\*.pdf\")",
+      "Bash(where:*)",
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "Bash(powershell -Command \"Test-Path ''C:\\\\Users\\\\Daradudai\\\\WebPage\\\\Projects\\\\Baumit\\\\Project Folder Picture.JPG''\")",
+      "Bash(powershell -Command \"Test-Path ''C:\\\\Users\\\\Daradudai\\\\WebPage\\\\Projects\\\\Portfolio\\\\thumbnails\\\\Rema Design Portfolio.jpg''\")",
+      "Bash(powershell -Command \"Test-Path ''C:\\\\Users\\\\Daradudai\\\\WebPage\\\\Projects\\\\thumbnails\\\\Modern Professional CV Resume.jpg''\")",
+      "mcp__ide__getDiagnostics",
+      "Bash(dir:*)"
     ]
   }
 }
