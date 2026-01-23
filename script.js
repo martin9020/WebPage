@@ -4,8 +4,6 @@ const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.getElementById('nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 const filterBtns = document.querySelectorAll('.filter-btn');
-const portfolioItems = document.querySelectorAll('.portfolio-item');
-const contactForm = document.getElementById('contact-form');
 
 // ===== Navigation Scroll Effect =====
 let lastScroll = 0;
@@ -77,32 +75,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Portfolio filter functionality moved to modal section below
 
-// ===== Contact Form Handling =====
-if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        // Get form data
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
-
-        // Create mailto link with form data
-        const subject = encodeURIComponent(data.subject || 'Website Inquiry');
-        const body = encodeURIComponent(
-            `Name: ${data.name}\n` +
-            `Email: ${data.email}\n` +
-            `Service: ${data.service || 'Not specified'}\n\n` +
-            `Message:\n${data.message}`
-        );
-
-        // Open email client
-        window.location.href = `mailto:martinizvorov@gmail.com?subject=${subject}&body=${body}`;
-
-        // Show success message
-        showNotification('Opening your email client...', 'success');
-    });
-}
-
 // ===== Notification System =====
 function showNotification(message, type = 'info') {
     // Remove existing notifications
@@ -173,7 +145,7 @@ function showNotification(message, type = 'info') {
 
 // ===== Scroll Reveal Animation =====
 function revealOnScroll() {
-    const reveals = document.querySelectorAll('.service-card, .skill-card, .timeline-item, .portfolio-item, .contact-card');
+    const reveals = document.querySelectorAll('.service-card, .portfolio-item');
 
     reveals.forEach(element => {
         const windowHeight = window.innerHeight;
@@ -189,22 +161,16 @@ function revealOnScroll() {
 // Add reveal styles
 const revealStyles = document.createElement('style');
 revealStyles.textContent = `
-    .service-card, .skill-card, .timeline-item, .portfolio-item, .contact-card {
+    .service-card, .portfolio-item {
         opacity: 0;
         transform: translateY(30px);
         transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    .service-card.revealed, .skill-card.revealed, .timeline-item.revealed,
-    .portfolio-item.revealed, .contact-card.revealed {
+    .service-card.revealed, .portfolio-item.revealed {
         opacity: 1;
         transform: translateY(0);
     }
-
-    .timeline-item:nth-child(2) { transition-delay: 0.1s; }
-    .timeline-item:nth-child(3) { transition-delay: 0.2s; }
-    .timeline-item:nth-child(4) { transition-delay: 0.3s; }
-    .timeline-item:nth-child(5) { transition-delay: 0.4s; }
 
     .service-card:nth-child(2) { transition-delay: 0.1s; }
     .service-card:nth-child(3) { transition-delay: 0.2s; }
@@ -216,62 +182,6 @@ document.head.appendChild(revealStyles);
 
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
-
-// ===== Typing Effect for Hero =====
-function typeWriter(element, text, speed = 50) {
-    let i = 0;
-    element.textContent = '';
-
-    function type() {
-        if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-
-    type();
-}
-
-// ===== Counter Animation for Stats =====
-function animateCounter(element, target, duration = 2000) {
-    let start = 0;
-    const increment = target / (duration / 16);
-    const isDecimal = target % 1 !== 0;
-
-    function update() {
-        start += increment;
-        if (start < target) {
-            element.textContent = isDecimal ? start.toFixed(1) : Math.floor(start);
-            requestAnimationFrame(update);
-        } else {
-            element.textContent = target;
-        }
-    }
-
-    update();
-}
-
-// Animate stats when they come into view
-const stats = document.querySelectorAll('.stat-number');
-let statsAnimated = false;
-
-function checkStats() {
-    if (statsAnimated) return;
-
-    const heroSection = document.querySelector('.hero');
-    if (!heroSection) return;
-
-    const rect = heroSection.getBoundingClientRect();
-
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-        statsAnimated = true;
-        // Stats are already showing text, no need to animate numbers
-    }
-}
-
-window.addEventListener('scroll', checkStats);
-window.addEventListener('load', checkStats);
 
 // ===== Parallax Effect for Hero Background =====
 window.addEventListener('scroll', () => {
