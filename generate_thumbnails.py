@@ -1,8 +1,9 @@
 import fitz  # PyMuPDF
 import os
 
-# Base path
-base_path = r"C:\Users\Daradudai\WebPage\Projects"
+# Base path - get the script's directory and append Projects
+script_dir = os.path.dirname(os.path.abspath(__file__))
+base_path = os.path.join(script_dir, "Projects")
 
 # List of all PDFs with their paths (relative to Projects folder)
 pdfs = [
@@ -54,7 +55,7 @@ pdfs = [
     "Uxbridge/704509--Claremont Primary School - Dining Hall-3D - View - GA.pdf",
 
     # Portfolio and CV
-    "Portfolio/Rema Design Portfolio.pdf",
+    "Portfolio/Old-Company-Portfolio.pdf",
     "Modern Professional CV Resume.pdf",
 ]
 

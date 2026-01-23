@@ -1,7 +1,9 @@
 from PIL import Image
 import os
 
-base_path = r"C:\Users\Daradudai\WebPage\Projects"
+# Base path - get the script's directory and append Projects
+script_dir = os.path.dirname(os.path.abspath(__file__))
+base_path = os.path.join(script_dir, "Projects")
 
 # Find all thumbnail folders and compress images
 def compress_thumbnails():
