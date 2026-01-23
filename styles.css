@@ -1174,6 +1174,11 @@ section {
     border: 1px solid var(--border);
 }
 
+/* Hide docs folders (Project Showcase, About Me) by default - shown only via About Me filter */
+.portfolio-folder[data-category="docs"] {
+    display: none;
+}
+
 .portfolio-folder:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-xl);

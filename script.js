@@ -292,6 +292,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add loaded class to body for initial animations
     document.body.classList.add('loaded');
+
+    // Apply initial filter to hide docs folders (Project Showcase, About Me)
+    filterFolders('all');
 });
 
 // Keyboard navigation is handled in the modal section
@@ -467,7 +470,7 @@ const folderData = {
         name: 'Project Showcase',
         category: 'docs',
         items: [
-            { type: 'pdf', src: 'Projects/Portfolio/Rema Design Portfolio.pdf', thumb: 'Projects/Portfolio/thumbnails/Rema Design Portfolio.jpg', title: 'Rema Design Portfolio', desc: 'Previous work collection' }
+            { type: 'pdf', src: 'Projects/Portfolio/Old-Company-Portfolio.pdf', thumb: 'Projects/Portfolio/thumbnails/Old-Company-Portfolio.jpg', title: 'Portfolio', desc: 'Previous work collection' }
         ]
     },
     'cv': {
