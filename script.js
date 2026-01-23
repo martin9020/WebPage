@@ -73,76 +73,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Portfolio filter functionality moved to modal section below
-
-// ===== Notification System =====
-function showNotification(message, type = 'info') {
-    // Remove existing notifications
-    const existingNotification = document.querySelector('.notification');
-    if (existingNotification) {
-        existingNotification.remove();
-    }
-
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <span>${message}</span>
-        <button class="notification-close">&times;</button>
-    `;
-
-    // Add styles
-    notification.style.cssText = `
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        padding: 16px 24px;
-        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
-        color: white;
-        border-radius: 8px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        z-index: 9999;
-        animation: slideIn 0.3s ease;
-    `;
-
-    // Add animation keyframes
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-    `;
-    document.head.appendChild(style);
-
-    // Add to DOM
-    document.body.appendChild(notification);
-
-    // Close button functionality
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.style.cssText = `
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 0;
-        line-height: 1;
-    `;
-    closeBtn.addEventListener('click', () => notification.remove());
-
-    // Auto remove after 5 seconds
-    setTimeout(() => {
-        if (notification.parentElement) {
-            notification.style.animation = 'slideIn 0.3s ease reverse';
-            setTimeout(() => notification.remove(), 300);
-        }
-    }, 5000);
-}
-
 // ===== Scroll Reveal Animation =====
 function revealOnScroll() {
     const reveals = document.querySelectorAll('.service-card, .portfolio-item');
@@ -426,35 +356,6 @@ if (typeof pdfjsLib !== 'undefined') {
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 }
 
-// ===== Render PDF Thumbnail =====
-async function renderPdfThumbnail(canvas, pdfSrc) {
-    if (typeof pdfjsLib === 'undefined') {
-        throw new Error('PDF.js not loaded');
-    }
-
-    const pdf = await pdfjsLib.getDocument(pdfSrc).promise;
-    const page = await pdf.getPage(1);
-
-    const scale = 0.5;
-    const viewport = page.getViewport({ scale });
-
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
-
-    const context = canvas.getContext('2d');
-    await page.render({
-        canvasContext: context,
-        viewport: viewport
-    }).promise;
-}
-
-// ===== Initialize PDF Thumbnails =====
-function initPdfThumbnails() {
-    // PDF thumbnails are now using fallback icons by default
-    // Thumbnails will be generated when folders are opened
-    console.log('PDF fallback icons loaded');
-}
-
 // ===== Filter Folders =====
 function filterFolders(filter) {
     currentFilter = filter;
@@ -694,10 +595,5 @@ if (pdfZoomReset) {
         updateZoomLevel();
     });
 }
-
-// Initialize PDF thumbnails on load
-document.addEventListener('DOMContentLoaded', () => {
-    initPdfThumbnails();
-});
 
 console.log('M I V Engineering Portfolio - Website Loaded Successfully');
