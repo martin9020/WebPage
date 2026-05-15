@@ -306,6 +306,18 @@ const folderData = {
             { type: 'pdf', src: 'Projects/Uxbridge/704509--Claremont Primary School - Dining Hall-3D - View - GA.pdf', thumb: 'Projects/Uxbridge/thumbnails/704509--Claremont Primary School - Dining Hall-3D - View - GA.jpg', title: '3D View GA', desc: 'General arrangement' }
         ]
     },
+    'ai-development': {
+        name: 'AI Development',
+        category: 'ai',
+        items: [
+            { type: 'image', src: 'Projects/AI Development/PortalFrame.png', title: 'Single-Prompt Portal Frame', desc: 'AI-generated Tekla model from natural language instructions' },
+            { type: 'image', src: 'Projects/AI Development/PortalFrameDetailed.png', title: 'Automated Component Detailing', desc: 'Haunches, base plates, pad footings, and purlin connections applied through Tekla Open API workflows' },
+            { type: 'link', src: 'https://github.com/martin9020/Tekla-MCP-Server', title: 'Tekla MCP Server', desc: 'C# MCP server exposing Tekla modeling, drawings, exports, clash checks, components, and semantic search to AI clients', label: 'Open GitHub', kicker: 'Repository' },
+            { type: 'link', src: 'https://www.linkedin.com/posts/martin-velichkov-bbb55484_in-the-video-i-give-claude-a-single-prompt-activity-7443556260249104384-3cFv', title: 'Prompt-to-Tekla Modeling', desc: 'Portal frame modeling from one structured prompt with columns, rafters, purlins, rails, and bracing', label: 'View Demo', kicker: 'LinkedIn Video' },
+            { type: 'link', src: 'https://www.linkedin.com/posts/martin-velichkov-bbb55484_part1-httpslnkdindfarnjxz-part-2-activity-7443622093658726401-nX-w', title: 'Custom Component Workflow', desc: 'Reusable connection prompts for eaves haunches, apex haunches, base plates, pad footings, and purlin connections', label: 'View Post', kicker: 'LinkedIn Post' },
+            { type: 'link', src: 'https://www.linkedin.com/posts/martin-velichkov-bbb55484_teklastructures-mcp-ai-activity-7443966716264726528-Fl47', title: 'AI-Assisted Detailing', desc: 'Natural-language detailing workflow for Tekla components, component classes, and batch property updates', label: 'View Demo', kicker: 'LinkedIn Video' }
+        ]
+    },
     'portfolio': {
         name: 'Project Showcase',
         category: 'docs',
@@ -415,6 +427,21 @@ function openFolder(folderId) {
                     </div>
                 </div>
             `;
+        } else if (item.type === 'link') {
+            return `
+                <div class="portfolio-item portfolio-item-link" data-type="link" data-src="${item.src}" data-title="${item.title}" data-desc="${item.desc}">
+                    <div class="portfolio-image">
+                        <div class="ai-link-card">
+                            <span class="ai-link-kicker">${item.kicker || 'AI Development'}</span>
+                            <span class="ai-link-action">${item.label || 'Open Link'}</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
+                    </div>
+                </div>
+            `;
         } else {
             // Use thumbnail image if available, otherwise show fallback
             const thumbSrc = item.thumb || '';
@@ -434,7 +461,14 @@ function openFolder(folderId) {
 
     // Add click handlers for content items
     document.querySelectorAll('#portfolio-contents .portfolio-item').forEach(item => {
-        item.addEventListener('click', () => openModal(item));
+        item.addEventListener('click', () => {
+            if (item.dataset.type === 'link') {
+                window.open(item.dataset.src, '_blank', 'noopener,noreferrer');
+                return;
+            }
+
+            openModal(item);
+        });
     });
 
     // Trigger reveal animation
@@ -596,4 +630,4 @@ if (pdfZoomReset) {
     });
 }
 
-console.log('M I V Engineering Portfolio - Website Loaded Successfully');
+console.log('M I V LTD. Portfolio - Website Loaded Successfully');
