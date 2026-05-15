@@ -312,10 +312,10 @@ const folderData = {
         items: [
             { type: 'image', src: 'Projects/AI Development/PortalFrame.png', title: 'Single-Prompt Portal Frame', desc: 'AI-generated Tekla model from natural language instructions' },
             { type: 'image', src: 'Projects/AI Development/PortalFrameDetailed.png', title: 'Automated Component Detailing', desc: 'Haunches, base plates, pad footings, and purlin connections applied through Tekla Open API workflows' },
-            { type: 'link', src: 'https://github.com/martin9020/Tekla-MCP-Server', title: 'Tekla MCP Server', desc: 'C# MCP server exposing Tekla modeling, drawings, exports, clash checks, components, and semantic search to AI clients', label: 'Open GitHub', kicker: 'Repository' },
-            { type: 'link', src: 'https://www.linkedin.com/posts/martin-velichkov-bbb55484_in-the-video-i-give-claude-a-single-prompt-activity-7443556260249104384-3cFv', title: 'Prompt-to-Tekla Modeling', desc: 'Portal frame modeling from one structured prompt with columns, rafters, purlins, rails, and bracing', label: 'View Demo', kicker: 'LinkedIn Video' },
-            { type: 'link', src: 'https://www.linkedin.com/posts/martin-velichkov-bbb55484_part1-httpslnkdindfarnjxz-part-2-activity-7443622093658726401-nX-w', title: 'Custom Component Workflow', desc: 'Reusable connection prompts for eaves haunches, apex haunches, base plates, pad footings, and purlin connections', label: 'View Post', kicker: 'LinkedIn Post' },
-            { type: 'link', src: 'https://www.linkedin.com/posts/martin-velichkov-bbb55484_teklastructures-mcp-ai-activity-7443966716264726528-Fl47', title: 'AI-Assisted Detailing', desc: 'Natural-language detailing workflow for Tekla components, component classes, and batch property updates', label: 'View Demo', kicker: 'LinkedIn Video' }
+            { type: 'link', platform: 'github', src: 'https://github.com/martin9020/Tekla-MCP-Server', title: 'Tekla MCP Server', desc: 'C# MCP server exposing Tekla modeling, drawings, exports, clash checks, components, and semantic search to AI clients', label: 'Open GitHub', kicker: 'Repository', code: ['using Tekla.Structures.Model;', 'var model = new Model();', 'CreateBeams(batch);', 'PutComponents(connections);', 'CommitChanges();'] },
+            { type: 'link', platform: 'linkedin', src: 'https://www.linkedin.com/posts/martin-velichkov-bbb55484_in-the-video-i-give-claude-a-single-prompt-activity-7443556260249104384-3cFv', title: 'Prompt-to-Tekla Modeling', desc: 'Portal frame modeling from one structured prompt with columns, rafters, purlins, rails, and bracing', label: 'View Demo', kicker: 'LinkedIn Video', code: ['prompt: portal frame', 'span: 20m', 'bays: 6 @ 6m', 'profiles: UKC / UKB', 'result: Tekla model'] },
+            { type: 'link', platform: 'linkedin', src: 'https://www.linkedin.com/posts/martin-velichkov-bbb55484_part1-httpslnkdindfarnjxz-part-2-activity-7443622093658726401-nX-w', title: 'Custom Component Workflow', desc: 'Reusable connection prompts for eaves haunches, apex haunches, base plates, pad footings, and purlin connections', label: 'View Post', kicker: 'LinkedIn Post', code: ['component: 102 eaves', 'component: 106 apex', 'base plate: 1004', 'purlin conn: 93', 'batch apply all'] },
+            { type: 'link', platform: 'linkedin', src: 'https://www.linkedin.com/posts/martin-velichkov-bbb55484_teklastructures-mcp-ai-activity-7443966716264726528-Fl47', title: 'AI-Assisted Detailing', desc: 'Natural-language detailing workflow for Tekla components, component classes, and batch property updates', label: 'View Demo', kicker: 'LinkedIn Video', code: ['select rafters + columns', 'apply haunches', 'create pad footings', 'connect 72 purlins', 'modify 674 parts'] }
         ]
     },
     'portfolio': {
@@ -428,11 +428,23 @@ function openFolder(folderId) {
                 </div>
             `;
         } else if (item.type === 'link') {
+            const platform = item.platform || 'code';
+            const platformLabel = platform === 'linkedin' ? 'LinkedIn' : 'GitHub';
+            const logo = platform === 'linkedin' ? 'in' : '&lt;/&gt;';
             return `
                 <div class="portfolio-item portfolio-item-link" data-type="link" data-src="${item.src}" data-title="${item.title}" data-desc="${item.desc}">
                     <div class="portfolio-image">
-                        <div class="ai-link-card">
-                            <span class="ai-link-kicker">${item.kicker || 'AI Development'}</span>
+                        <div class="ai-link-card ai-link-card-${platform}">
+                            <div class="ai-link-top">
+                                <span class="ai-link-kicker">${item.kicker || 'AI Development'}</span>
+                                <span class="ai-link-logo" aria-label="${platformLabel}">${logo}</span>
+                            </div>
+                            <div class="ai-code-window" aria-hidden="true">
+                                <span class="ai-code-dot"></span>
+                                <span class="ai-code-dot"></span>
+                                <span class="ai-code-dot"></span>
+                                <code>${renderCodeLines(item.code)}</code>
+                            </div>
                             <span class="ai-link-action">${item.label || 'Open Link'}</span>
                         </div>
                     </div>
@@ -498,6 +510,19 @@ function goBackToFolders() {
 
 // Make goBackToFolders available globally
 window.goBackToFolders = goBackToFolders;
+
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+function renderCodeLines(lines = []) {
+    return lines.map(line => `<span>${escapeHtml(line)}</span>`).join('');
+}
 
 // ===== Open Modal =====
 function openModal(item) {
