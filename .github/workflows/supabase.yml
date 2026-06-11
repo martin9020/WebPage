@@ -1,0 +1,87 @@
+name: Deploy Company Supabase
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "supabase/config.toml"
+      - "supabase/migrations/**"
+      - "supabase/functions/**"
+      - ".github/workflows/supabase.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: company-supabase
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+      NTFY_BASE_URL: ${{ secrets.NTFY_BASE_URL }}
+      NTFY_BEARER_TOKEN: ${{ secrets.NTFY_BEARER_TOKEN }}
+      NTFY_PRIORITY: ${{ secrets.NTFY_PRIORITY }}
+      VISIT_HASH_SALT: ${{ secrets.VISIT_HASH_SALT }}
+      VISIT_NOTIFY_COOLDOWN_MINUTES: ${{ secrets.VISIT_NOTIFY_COOLDOWN_MINUTES }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check Supabase secrets
+        id: secrets
+        shell: bash
+        run: |
+          missing=0
+          for name in SUPABASE_ACCESS_TOKEN SUPABASE_PROJECT_REF SUPABASE_DB_PASSWORD NTFY_TOPIC VISIT_HASH_SALT; do
+            if [ -z "${!name}" ]; then
+              echo "::warning::Missing $name"
+              missing=1
+            fi
+          done
+          if [ "$missing" -ne 0 ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup Supabase CLI
+        if: steps.secrets.outputs.ready == 'true'
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Link Supabase project
+        if: steps.secrets.outputs.ready == 'true'
+        run: supabase link --project-ref "$SUPABASE_PROJECT_REF"
+
+      - name: Push database migrations
+        if: steps.secrets.outputs.ready == 'true'
+        run: supabase db push
+
+      - name: Configure Edge Function secrets
+        if: steps.secrets.outputs.ready == 'true'
+        shell: bash
+        run: |
+          {
+            echo "NTFY_TOPIC=$NTFY_TOPIC"
+            echo "NTFY_BASE_URL=${NTFY_BASE_URL:-https://ntfy.sh}"
+            echo "NTFY_BEARER_TOKEN=$NTFY_BEARER_TOKEN"
+            echo "NTFY_PRIORITY=${NTFY_PRIORITY:-3}"
+            echo "NTFY_TAGS=building,steel"
+            echo "VISIT_CLICK_URL=https://www.steelit.site/"
+            echo "VISIT_HASH_SALT=$VISIT_HASH_SALT"
+            echo "VISIT_NOTIFY_COOLDOWN_MINUTES=${VISIT_NOTIFY_COOLDOWN_MINUTES:-1440}"
+            echo "VISIT_ALLOWED_ORIGINS=https://www.steelit.site,https://steelit.site"
+          } > supabase/.edge-function.env
+          supabase secrets set --project-ref "$SUPABASE_PROJECT_REF" --env-file supabase/.edge-function.env
+
+      - name: Deploy Edge Functions
+        if: steps.secrets.outputs.ready == 'true'
+        run: supabase functions deploy

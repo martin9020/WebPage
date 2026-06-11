@@ -1,0 +1,4 @@
+project_id = "steelit-website-notifications"
+
+[functions.track-company-visit]
+verify_jwt = false
