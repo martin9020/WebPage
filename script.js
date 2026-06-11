@@ -5,31 +5,6 @@ const navMenu = document.getElementById('nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 const filterBtns = document.querySelectorAll('.filter-btn');
 
-// ===== Visit Notifications =====
-const visitTrackingConfig = {
-    supabaseUrl: 'https://hqmgnouwuastlsenalre.supabase.co'
-};
-
-const visitTrackingEndpoint = `${visitTrackingConfig.supabaseUrl}/functions/v1/track-visit`;
-
-function trackVisit() {
-    const payload = {
-        site: 'steelit-portfolio-site',
-        path: `${window.location.pathname}${window.location.search}`,
-        referrer: document.referrer || '',
-        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || ''
-    };
-
-    fetch(visitTrackingEndpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        keepalive: true
-    }).catch(() => {});
-}
-
-trackVisit();
-
 // ===== Navigation Scroll Effect =====
 let lastScroll = 0;
 
