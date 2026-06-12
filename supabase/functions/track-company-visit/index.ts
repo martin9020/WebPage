@@ -55,6 +55,36 @@ function getClientIp(request: Request) {
   );
 }
 
+async function lookupGeo(ipAddress: string, fallbackCountryCode: string) {
+  const fallback = {
+    country: fallbackCountryCode,
+    countryCode: fallbackCountryCode,
+    city: "",
+    region: "",
+    source: fallbackCountryCode ? "headers" : ""
+  };
+
+  if (!ipAddress || ipAddress === "unknown") return fallback;
+
+  try {
+    const response = await fetch(`https://ipwho.is/${encodeURIComponent(ipAddress)}`);
+    if (!response.ok) return fallback;
+
+    const data = await response.json();
+    if (data?.success === false) return fallback;
+
+    return {
+      country: cleanText(data?.country, 80) || fallback.country,
+      countryCode: cleanText(data?.country_code, 8) || fallback.countryCode,
+      city: cleanText(data?.city, 120),
+      region: cleanText(data?.region, 120),
+      source: "ipwho.is"
+    };
+  } catch {
+    return fallback;
+  }
+}
+
 async function sha256Hex(value: string) {
   const input = new TextEncoder().encode(value);
   const digest = await crypto.subtle.digest("SHA-256", input);
@@ -177,8 +207,10 @@ Deno.serve(async (request) => {
   const referrer = cleanText(payload.referrer, 500);
   const timezone = cleanText(payload.timezone, 80);
   const userAgent = cleanText(request.headers.get("user-agent"), 500);
-  const country = cleanText(request.headers.get("cf-ipcountry"), 8);
-  const ipHash = await sha256Hex(`${salt}:${getClientIp(request)}`);
+  const headerCountryCode = cleanText(request.headers.get("cf-ipcountry"), 8);
+  const ipAddress = cleanText(getClientIp(request), 80);
+  const geo = await lookupGeo(ipAddress, headerCountryCode);
+  const ipHash = await sha256Hex(`${salt}:${ipAddress}`);
   const cooldownMinutes = Number(textEnv("VISIT_NOTIFY_COOLDOWN_MINUTES", String(DEFAULT_COOLDOWN_MINUTES))) || DEFAULT_COOLDOWN_MINUTES;
 
   try {
@@ -192,8 +224,11 @@ Deno.serve(async (request) => {
     let notificationSent = false;
     if (!alreadyNotified) {
       const referrerLine = referrer ? `\nReferrer: ${referrer}` : "";
-      const countryLine = country ? `\nCountry: ${country}` : "";
-      const message = `New Steelit website visitor\nPath: ${path}${countryLine}${referrerLine}`;
+      const ipLine = ipAddress ? `\nIP: ${ipAddress}` : "";
+      const countryLine = geo.country ? `\nCountry: ${geo.country}` : "";
+      const cityLine = geo.city ? `\nCity: ${geo.city}` : "";
+      const regionLine = geo.region ? `\nRegion: ${geo.region}` : "";
+      const message = `New Steelit website visitor\nPath: ${path}${ipLine}${countryLine}${cityLine}${regionLine}${referrerLine}`;
       notificationSent = await publishNtfy(message);
     }
 
@@ -202,8 +237,13 @@ Deno.serve(async (request) => {
       path,
       referrer,
       user_agent: userAgent,
+      ip_address: ipAddress,
       ip_hash: ipHash,
-      country,
+      country: geo.country,
+      country_code: geo.countryCode,
+      city: geo.city,
+      region: geo.region,
+      location_source: geo.source,
       timezone,
       notified: notificationSent
     });

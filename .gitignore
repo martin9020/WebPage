@@ -1,3 +1,4 @@
 .env
 .env.*
 supabase/.edge-function.env
+supabase/.temp/
