@@ -5,17 +5,17 @@ const navMenu = document.getElementById('nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 const filterBtns = document.querySelectorAll('.filter-btn');
 
-// ===== Visit Notifications =====
-const visitTrackingEndpoint = 'https://wtjnqpvaerhvmeeuhuxq.supabase.co/functions/v1/track-company-visit';
+// ===== Site Signal =====
+const siteSignalEndpoint = 'https://wtjnqpvaerhvmeeuhuxq.supabase.co/functions/v1/site-ping';
 
-function trackVisit() {
+function sendSiteSignal() {
     const payload = {
         path: `${window.location.pathname}${window.location.search}`,
         referrer: document.referrer || '',
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || ''
     };
 
-    fetch(visitTrackingEndpoint, {
+    fetch(siteSignalEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -23,7 +23,7 @@ function trackVisit() {
     }).catch(() => {});
 }
 
-trackVisit();
+sendSiteSignal();
 
 // ===== Navigation Scroll Effect =====
 let lastScroll = 0;
