@@ -8,6 +8,7 @@ Current project:
 steelit.site
 ref: wtjnqpvaerhvmeeuhuxq
 endpoint: https://wtjnqpvaerhvmeeuhuxq.supabase.co/functions/v1/track-company-visit
+ntfy topic: steel-it
 ```
 
 Required GitHub secrets in `martin9020/WebPage`:
